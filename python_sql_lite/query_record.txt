@@ -123,3 +123,51 @@ AI-generated SQL query:
                        FROM Breeds
                        WHERE description LIKE '%mashed potatoes%');
 Answer: 
+
+
+
+Question: who owns the biggest stable?
+AI-generated SQL query: 
+
+    SELECT o.first_name, o.last_name, COUNT(h.stable_id) AS stable_size
+    FROM Owners o
+    JOIN Horses h
+    ON o.owner_id = h.owner_id
+    JOIN Stables s
+    ON h.stable_id = s.stable_id
+    GROUP BY o.owner_id
+    ORDER BY stable_size DESC
+    LIMIT 1;
+Answer: 
+
+('Susan', 'Taylor', 1)
+
+Question: who owns the biggest stable?
+AI-generated SQL query: 
+
+    SELECT s.contact_person, COUNT(h.stable_id) AS stable_size
+    JOIN Horses h
+    JOIN Stables s
+    ON h.stable_id = s.stable_id
+    GROUP BY h.stable_id
+    ORDER BY stable_size DESC
+    LIMIT 1;
+Answer: 
+
+('Susan', 'Taylor', 1)
+
+❯ python query.py --query "SELECT s.contact_person, COUNT(h.stable_id) AS stable_size
+    FROM Horses h
+    JOIN Stables s
+    ON h.stable_id = s.stable_id
+    GROUP BY h.stable_id
+    ORDER BY stable_size DESC
+    LIMIT 1;"
+Executing query: SELECT s.contact_person, COUNT(h.stable_id) AS stable_size
+    FROM Horses h
+    JOIN Stables s
+    ON h.stable_id = s.stable_id
+    GROUP BY h.stable_id
+    ORDER BY stable_size DESC
+    LIMIT 1;
+('John Stablemaster', 4)

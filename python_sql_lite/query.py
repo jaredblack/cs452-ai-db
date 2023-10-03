@@ -31,7 +31,7 @@ def select_from_table(conn, query):
         print(row)
 
 if __name__ == "__main__":
-    database = "./pythonsqlite.db"
+    database = "./horse.db"
     conn = create_connection(database)
 
     parser = argparse.ArgumentParser()
