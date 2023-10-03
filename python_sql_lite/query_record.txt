@@ -79,3 +79,47 @@ AI-generated SQL query:
 Answer: 
 
 ('Thunderstrike', 'John', 'Doe')
+
+Question: What does Rusty need to work on?
+AI-generated SQL query: 
+
+    SELECT notes
+    FROM TrainingRecords
+    INNER JOIN Horses
+    ON TrainingRecords.horse_id = Horses.horse_id
+    WHERE Horses.name = 'Rusty';
+Answer: 
+
+('Improving speed and agility.',)
+
+
+FAILED: 
+Question: Which horse is the fastest?
+AI-generated SQL query: 
+
+    SELECT h.name, MAX(tr.duration_minutes) AS fastest_time
+    FROM Horses h
+    JOIN TrainingRecords tr
+    ON h.horse_id = tr.horse_id
+    GROUP BY h.name;
+Answer: 
+
+('Amber Fire', 40)
+('Blaze', 60)
+('Golden Gem', 70)
+('Midnight Star', 45)
+('Moonlight Mirage', 55)
+('Rusty', 35)
+('Silver Shadow', 30)
+('Stardust', 75)
+('Thunderstrike', 60)
+('Whispering Wind', 50)
+
+Question: Which horses like mashed potatoes?
+AI-generated SQL query: 
+ SELECT name
+     FROM Horses
+     WHERE breed_id IN (SELECT breed_id
+                       FROM Breeds
+                       WHERE description LIKE '%mashed potatoes%');
+Answer: 
