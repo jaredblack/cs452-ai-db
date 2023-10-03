@@ -68,3 +68,14 @@ Answer:
 ('Moonlight Mirage',)
 ('Rusty',)
 ('Golden Gem',)
+
+Question: Cilet jane kuajte qe kane ditelindjen ne Maj dhe kush eshte pronari i tij?
+AI-generated SQL query: 
+
+    SELECT Horses.name, Owners.first_name, Owners.last_name
+    FROM Horses
+    INNER JOIN Owners ON Horses.owner_id = Owners.owner_id
+    WHERE strftime('%m', birthdate) = '05';
+Answer: 
+
+('Thunderstrike', 'John', 'Doe')
