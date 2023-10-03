@@ -1,0 +1,70 @@
+Question: What are the names of the horses that were trained after March 1, 2023, and on which date were they trained, and what is the email address of their owners?
+AI-generated SQL query: 
+
+    SELECT h.name, t.training_date, o.email
+    FROM Horses h
+    JOIN TrainingRecords t ON h.horse_id = t.horse_id
+    JOIN Owners o ON h.owner_id = o.owner_id
+    WHERE t.training_date > '2023-03-01';
+Answer: 
+
+('Silver Shadow', '2023-03-20', 'robert.johnson@example.com')
+('Stardust', '2023-04-25', 'mary.brown@example.com')
+('Blaze', '2023-05-30', 'michael.davis@example.com')
+('Amber Fire', '2023-06-15', 'emily.wilson@example.com')
+('Whispering Wind', '2023-07-20', 'david.lee@example.com')
+('Moonlight Mirage', '2023-08-25', 'lisa.garcia@example.com')
+('Rusty', '2023-09-10', 'william.martinez@example.com')
+('Golden Gem', '2023-10-15', 'susan.taylor@example.com')
+
+
+Question: What are the names of the horses that were trained after March 1, 2023, and on which date were they trained?
+AI-generated SQL query: 
+
+    SELECT Horses.name, TrainingRecords.training_date
+    FROM Horses
+    INNER JOIN TrainingRecords
+    ON Horses.horse_id = TrainingRecords.horse_id
+    WHERE TrainingRecords.training_date > '2023-03-01';
+Answer: 
+
+('Silver Shadow', '2023-03-20')
+('Stardust', '2023-04-25')
+('Blaze', '2023-05-30')
+('Amber Fire', '2023-06-15')
+('Whispering Wind', '2023-07-20')
+('Moonlight Mirage', '2023-08-25')
+('Rusty', '2023-09-10')
+('Golden Gem', '2023-10-15')
+
+Question: What is the schema of the Horses table?
+AI-generated SQL query: 
+
+    PRAGMA TABLE_INFO(Horses);
+Answer: 
+
+(0, 'horse_id', 'INTEGER', 0, None, 1)
+(1, 'name', 'TEXT', 0, None, 0)
+(2, 'birthdate', 'DATE', 0, None, 0)
+(3, 'gender', 'TEXT', 0, None, 0)
+(4, 'color', 'TEXT', 0, None, 0)
+(5, 'breed_id', 'INTEGER', 0, None, 0)
+(6, 'owner_id', 'INTEGER', 0, None, 0)
+(7, 'stable_id', 'INTEGER', 0, None, 0)
+
+
+Question: What are the names of all the horses?
+AI-generated SQL query: 
+ SELECT name FROM Horses;
+Answer: 
+
+('Thunderstrike',)
+('Midnight Star',)
+('Silver Shadow',)
+('Stardust',)
+('Blaze',)
+('Amber Fire',)
+('Whispering Wind',)
+('Moonlight Mirage',)
+('Rusty',)
+('Golden Gem',)
