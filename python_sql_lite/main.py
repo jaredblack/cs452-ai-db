@@ -10,8 +10,7 @@ DATABASE = "./horse.db"
 
 def main(conn, prompt):
     # Load your API key from an environment variable or secret management service
-    openai.api_key = "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"
-    # openai.api_key = os.getenv("OPENAI_KEY")
+    openai.api_key = os.getenv("OPENAI_KEY")
     print(f"Prompt: {prompt}")
 
     prompt = f"""
